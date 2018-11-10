@@ -1,5 +1,5 @@
 {
-    "name": "bravist/cnvex",
+    "name": "troy/cnvex",
     "description": "Cnvex is a PHP library for e.cnvex.cn",
     "type": "library",
     "minimum-stability": "dev",
@@ -15,8 +15,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "程会勇",
-            "email": "chenghuiyong1987@gmail.com"
+            "name": "Troy",
+            "email": "tangcy@cartechfin.com"
         }
     ],
     "autoload": {
