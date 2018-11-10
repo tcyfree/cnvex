@@ -178,9 +178,10 @@ class Api extends Http
      * @param  string $province 省份
      * @param  string $city 城市
      * @param  string $district 区/县
+     * @param  string $promoteId 推广码
      * @return string
      */
-    public function qrcodeApply($userId, $shopName, $doorheadPhotoPath, $captcha, $mobileNo, $province, $city, $district, $address)
+    public function qrcodeApply($userId, $shopName, $doorheadPhotoPath, $captcha, $mobileNo, $province, $city, $district, $address, $promoteId)
     {
         $response = $this->post([
             'service'           => 'qrcodeApply',
@@ -192,7 +193,8 @@ class Api extends Http
             'province'            => $province,
             'city'                => $city,
             'district'            => $district,
-            'address'             => $address
+            'address'             => $address,
+            'promoteId'           => $promoteId
         ]);
         return $response;
     }
