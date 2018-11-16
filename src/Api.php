@@ -149,7 +149,7 @@ class Api extends Http
      * @return string
      */
     public function commonAuditRegister($externalUid, $captcha, $mobile, $type, $grade,
-                                        $personRegisterDto = '', $individualRegisterDto = '', $businessRegisterDto = '', $from = 'MOBILE', $email = ''){
+                                        $personRegisterDto = '', $individualRegisterDto = '', $businessRegisterDto = '', $notifyUrl = '', $returnUrl = '', $from = 'MOBILE', $email = ''){
         $response = $this->post([
             'service'               => 'commonAuditRegister',
             'outUserId'             => $externalUid,
@@ -161,7 +161,9 @@ class Api extends Http
             'registerClient'        => $from,
             'personRegisterDto'     => $personRegisterDto,
             'individualRegisterDto' => $individualRegisterDto,
-            'businessRegisterDto'   => $businessRegisterDto
+            'businessRegisterDto'   => $businessRegisterDto,
+            'returnUrl'             => $returnUrl,
+            'notifyUrl'             => $notifyUrl,
         ]);
         return $response->userId;
     }
@@ -181,7 +183,7 @@ class Api extends Http
      * @param  string $promoteId 推广码
      * @return string
      */
-    public function qrcodeApply($userId, $shopName, $doorheadPhotoPath, $captcha, $mobileNo, $province, $city, $district, $address, $promoteId)
+    public function qrcodeApply($userId, $shopName, $doorheadPhotoPath, $captcha, $mobileNo, $province, $city, $district, $address, $promoteId, $notifyUrl = '', $returnUrl = '')
     {
         $response = $this->post([
             'service'           => 'qrcodeApply',
@@ -194,7 +196,9 @@ class Api extends Http
             'city'                => $city,
             'district'            => $district,
             'address'             => $address,
-            'promoteId'           => $promoteId
+            'promoteId'           => $promoteId,
+            'returnUrl'           => $returnUrl,
+            'notifyUrl'           => $notifyUrl,
         ]);
         return $response;
     }
