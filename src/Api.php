@@ -174,6 +174,7 @@ class Api extends Http
      * @param  string $userId 用户ID
      * @param  string $shopName 店铺名称
      * @param  string $doorheadPhotoPath 门头照地址
+     * @param  string $openAccountPath, 开户许可证地址
      * @param  integer $captcha 短信验证码
      * @param  integer $mobileNo 手机号码
      * @param  string $address 地址
@@ -183,13 +184,14 @@ class Api extends Http
      * @param  string $promoteId 推广码
      * @return string
      */
-    public function qrcodeApply($userId, $shopName, $doorheadPhotoPath, $captcha, $mobileNo, $province, $city, $district, $address, $promoteId, $notifyUrl = '', $returnUrl = '')
+    public function qrcodeApply($userId, $shopName, $doorheadPhotoPath, $captcha, $mobileNo, $province, $city, $district, $address, $promoteId, $notifyUrl = '', $openAccountPath = '',  $returnUrl = '')
     {
         $response = $this->post([
             'service'           => 'qrcodeApply',
             'userId'              => $userId,
             'shopName'            => $shopName,
             'doorheadPhotoPath'   => $doorheadPhotoPath,
+            'openAccountPath'     => $openAccountPath,
             'captcha'             => $captcha,
             'mobileNo'            => $mobileNo,
             'province'            => $province,
