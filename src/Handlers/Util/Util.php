@@ -30,7 +30,7 @@ abstract class Util
     public function getRequestNo()
     {
         list($usec, $sec) = explode(' ', microtime());
-        $this->requestNo = 'RQN' . date('YmdHis') . intval((float) $sec + ((float) $usec * 100000));
+        $this->requestNo = 'RQN' . date('YmdHis') . intval((float) $sec + ((float) $usec * 100000)) . mt_rand(1000000000,9999999999);
         return $this->requestNo;
     }
 
