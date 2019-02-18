@@ -45,6 +45,29 @@ class Api extends Http
     }
 
     /**
+     * POS机支付
+     * @param  string  $transNo      商户交易单号
+     * @param  string  $transNo      通知URL
+     * @param  integer $amount       付款金额
+     * @param  string  $payerId      付款人企账通ID
+     * @param  string  $payerAccount 付款人企账通账户
+     * @return string
+     */
+    public function posPay($transNo, $notifyUrl, $amount, $payerId = '', $payerAccount = '')
+    {
+        return $this->post([
+            'service'        => 'posPay',
+            'payerUserId'    => $payerId,
+            'payerAccountNo' => $payerAccount,
+            'amount'         => $amount,
+            'userIp'         => get_client_ip(),
+            'merchOrderNo'   => $transNo,
+            'notifyUrl'      => $notifyUrl,
+        ]);
+    }
+
+
+    /**
      * 查询企账通2.0账户信息，返回全部信息
      * @param  string $internalUid 企账通用户ID
      * @param  string $externalUid 企账通外部用户ID
