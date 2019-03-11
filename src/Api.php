@@ -433,6 +433,51 @@ class Api extends Http
             'endProfitTime'   => $endProfitTime,
         ]);
     }
+    
+    
+        /**
+     * 查询转账交易记录拓展
+     * @param  string  $seller 卖家企账通用户ID
+     * @param  string  $buyer  买家企账通用户ID
+     * @param  string  $status INIT:初始状态
+    PROCESSING:支付中
+    SUCCESS:交易成功
+    FAIL:交易失败
+    CANCEL:交易撤销
+    REFUND:交易退款
+    REFUND_PROCESSING:交易退款中
+    CLOSE:交易关闭
+     * @param  integer $page  当前页
+     * @param  integer $limit 页面个数
+     * @param  integer $page 起始页
+     * @param  integer $limit 页面大小，默认 20
+     * @param  string  $startTime 开始日期
+     * @param  string  $endTime   结束日期
+     * @param  string  $tradeType 交易类型
+     * @param  string  $startProfitTime 清分开始时间
+     * @param  string  $endProfitTime   清分结束时间
+     * @return object
+     */
+    public function queryTransfersExt($seller = '', $buyer = '', $status = 'SUCCESS', $page = 1, $limit = 20, $startTime = null, $endTime = null, $tradeType = '', $startProfitTime = null, $endProfitTime = null)
+    {
+        return $this->post([
+            'service'      => 'tradeQueryPageExt',
+            'sellerUserId' => $seller,
+            'buyerUserId'  => $buyer,
+            'tradeStatus'  => $status,
+            'start'        => $page,
+            'limit'        => $limit,
+            'startTime'    => $startTime,
+            'endTime'      => $endTime,
+            'tradeType'    => $tradeType,
+            'startProfitTime' => $startProfitTime,
+            'endProfitTime'   => $endProfitTime,
+        ]);
+    }
+    
+    
+    
+    
 
     /**
      * 查询单笔充值或者提现
