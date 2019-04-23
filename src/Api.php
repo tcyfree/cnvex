@@ -756,4 +756,26 @@ class Api extends Http
             'origMerchOrdeNo'   => $orignalNo
         ]);
     }
+    
+    /**
+     * @param $loanFeeMode      //手续费类型  SELLER:卖方 BUYER:买方 BOTH:双方
+     * @param $instalments      //分期数
+     * @param $merchOrderNos    //批量订单号 ['OWLT17110316322803600015','OWLT17110316322803600907','OWLT17110316322803600316']
+     * @param $userIp           //用户ip  122.227.225.142
+     * @param string $macAddress  //用户mac地址 122.227.225.142 00:01:6C:06:A6:29
+     * @return string
+     */
+    public function instalmentBatchPay($loanFeeMode,$instalments,$merchOrderNos,$returnUrl,$notifyUrl)
+    {
+        return $this->post([
+            'service'       => 'instalmentBatchPay',
+            'loanFeeMode'   => $loanFeeMode,
+            'instalments'   => $instalments,
+            'merchOrderNos' => $merchOrderNos,
+            'userIp'        => get_client_ip(),
+            'returnUrl'     => $returnUrl,
+            'notifyUrl'     => $notifyUrl
+        ]);
+    }
+    
 }
