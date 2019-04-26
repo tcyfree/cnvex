@@ -523,6 +523,34 @@ class Api extends Http
     }
 
     /**
+     * 查询包含所有状态的多笔充值或者提现
+     * @param string $internalUid 企账通用户ID
+     * @param  integer $page  当前页
+     * @param  integer $limit 页面个数
+     * @param string $status INIT:初始状态;PROCESSING:处理中;SUCCESS:交易成功;FAIL:交易失败
+     * @param  integer $page  当前页
+     * @param  integer $limit 页面个数
+     * @param  integer $page 起始页
+     * @param  integer $limit 页面大小，默认 20
+     * @param  string  $startTime 开始日期
+     * @param  string  $endTime   结束日期
+     * @param  string  $tradeType 交易类型
+     * @return object
+     */
+    public function queryAllRechargesAndwithdrawals($internalUid, $page = 1, $limit = 20, $startTime = null, $endTime = null, $tradeType = '')
+    {
+        return $this->post([
+            'service'    => 'fundQueryPage',
+            'userId'     => $internalUid,
+            'start'      => $page,
+            'limit'      => $limit,
+            'tradeType'  => $tradeType,
+            'startTime'  => $startTime,
+            'endTime'    => $endTime,
+        ]);
+    }
+
+    /**
      * 查询用户绑卡记录
      * @param  string  $internalUid 企账通用户ID
      * @param  string  $purpose 绑卡用途
