@@ -922,5 +922,23 @@ class Api extends Http
             'whiteBarAccountTypeEnum'   => $whiteBarAccountTypeEnum
         ]);
     }
+
+
+    /**
+     * 白条查询逾期
+     * @param $userId
+     * @param $page
+     * @param $pageSize
+     * @return string
+     */
+    public function queryOverdue($userId,$page,$pageSize)
+    {
+        return $this->post([
+            'service'   => 'queryOverdue',
+            'userId'    => $userId,
+            'page'      => $page,
+            'pageSize'  => $pageSize
+        ]);
+    }
     
 }
