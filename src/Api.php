@@ -962,5 +962,168 @@ class Api extends Http
             'notifyUrl'     => $notifyUrl
         ]);
     }
+
+
+    /**
+     * 金融 白条支付
+     * @param $agentUserCode
+     * @param $payerUserId
+     * @param $payerAccountNo
+     * @param $amount
+     * @param $macAddress
+     * @return string
+     */
+    public function baiTiaoPay($agentUserCode,$payerUserId,$payerAccountNo,$amount,$macAddress)
+    {
+        return $this->post([
+            'service'           => 'baiTiaoPay',
+            'agentUserCode'     => $agentUserCode,
+            'payerUserId'       => $payerUserId,
+            'payerAccountNo'    => $payerAccountNo,
+            'amount'            => $amount,
+            'userIp'            => get_client_ip(),
+            'macAddress'        => $macAddress
+        ]);
+    }
+
+
+    /**
+     * 白条清分接口
+     * @param $origMerchOrdeNo
+     * @param $tradeProfitInfoList
+     * @param $agentUserCode
+     * @param $orderTitle
+     * @param $goodsCount
+     * @param $receivingAddress
+     * @param $inquiryTime
+     * @param $quoteTime
+     * @param $orderTime
+     * @param $deliveryTime
+     * @param $payTime
+     * @param $carBrandName
+     * @param $carSeriesName
+     * @param $carModelName
+     * @param $details
+     * @return string
+     */
+    public function tradeProfitForBaiTiao($origMerchOrdeNo,$tradeProfitInfoList,$agentUserCode,$orderTitle,$goodsCount,$receivingAddress,$inquiryTime,$quoteTime,$orderTime,$deliveryTime,$payTime,$carBrandName,$carSeriesName,$carModelName,$details)
+    {
+        return $this->post([
+            'service'               => 'tradeProfitForBaiTiao',
+            'origMerchOrdeNo'       => $origMerchOrdeNo,
+            'tradeProfitInfoList'   => $tradeProfitInfoList,
+            'agentUserCode'         => $agentUserCode,
+            'orderTitle'            => $orderTitle,
+            'goodsCount'            => $goodsCount(),
+            'receivingAddress'      => $receivingAddress(),
+            'inquiryTime'           => $inquiryTime,
+            'quoteTime'             => $quoteTime,
+            'orderTime'             => $orderTime,
+            'deliveryTime'          => $deliveryTime,
+            'payTime'               => $payTime,
+            'carBrandName'          => $carBrandName,
+            'carSeriesName'         => $carSeriesName,
+            'carModelName'          => $carModelName,
+            'details'               => $details
+        ]);
+    }
+
+
+    /** 白条退款
+     * @param $origMerchOrdeNo
+     * @param $refundAmount
+     * @param $refundReason
+     * @param $agentUserCode
+     * @param $orderTitle
+     * @param $goodsCount
+     * @param $receivingAddress
+     * @param $inquiryTime
+     * @param $quoteTime
+     * @param $orderTime
+     * @param $deliveryTime
+     * @param $payTime
+     * @param $carBrandName
+     * @param $carSeriesName
+     * @param $carModelName
+     * @param $details
+     * @return string
+     */
+    public function tradeRefundForBaiTiao($origMerchOrdeNo,$refundAmount,$refundReason,$agentUserCode,$orderTitle,$goodsCount,$receivingAddress,$inquiryTime,$quoteTime,$orderTime,$deliveryTime,$payTime,$carBrandName,$carSeriesName,$carModelName,$details)
+    {
+        return $this->post([
+            'service'               => 'tradeRefundForBaiTiao',
+            'origMerchOrdeNo'       => $origMerchOrdeNo,
+            'refundAmount'          => $refundAmount,
+            'refundReason'          => $refundReason,
+            'agentUserCode'         => $agentUserCode,
+            'orderTitle'            => $orderTitle,
+            'goodsCount'            => $goodsCount(),
+            'receivingAddress'      => $receivingAddress(),
+            'inquiryTime'           => $inquiryTime,
+            'quoteTime'             => $quoteTime,
+            'orderTime'             => $orderTime,
+            'deliveryTime'          => $deliveryTime,
+            'payTime'               => $payTime,
+            'carBrandName'          => $carBrandName,
+            'carSeriesName'         => $carSeriesName,
+            'carModelName'          => $carModelName,
+            'details'               => $details
+        ]);
+    }
+
+
+    /**
+     * 查询用户白条信息
+     * @param $userId
+     * @param $whiteBarAccountTypeEnum
+     * @param $start
+     * @param $limit
+     * @return string
+     */
+    public function queryCustomerWhiteBarApiService($userId,$whiteBarAccountTypeEnum,$start,$limit)
+    {
+        return $this->post([
+            'service'                   => 'queryCustomerWhiteBarApiService',
+            'userId'                    => $userId,
+            'whiteBarAccountTypeEnum'   => $whiteBarAccountTypeEnum,
+            'start'                     => $start,
+            'limit'                     => $limit
+
+        ]);
+    }
+
+
+    /**
+     * 白条首页
+     * @param $userId
+     * @param $whiteBarAccountTypeEnum
+     * @return string
+     */
+    public function whilteBarIndexApiService($userId,$whiteBarAccountTypeEnum)
+    {
+        return $this->post([
+            'service'                   => 'whilteBarIndexApiService',
+            'userId'                    => $userId,
+            'whiteBarAccountTypeEnum'   => $whiteBarAccountTypeEnum
+        ]);
+    }
+
+
+    /**
+     * 白条查询逾期
+     * @param $userId
+     * @param $page
+     * @param $pageSize
+     * @return string
+     */
+    public function queryOverdue($userId,$page,$pageSize)
+    {
+        return $this->post([
+            'service'   => 'queryOverdue',
+            'userId'    => $userId,
+            'page'      => $page,
+            'pageSize'  => $pageSize
+        ]);
+    }
     
 }
