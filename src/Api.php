@@ -867,9 +867,12 @@ class Api extends Http
      * @param $carSeriesName
      * @param $carModelName
      * @param $details
+     * @param $notifyUrl
      * @return string
      */
-    public function tradeRefundForBaiTiao($origMerchOrdeNo,$refundAmount,$refundReason,$agentUserCode,$orderTitle,$goodsCount,$receivingAddress,$inquiryTime,$quoteTime,$orderTime,$deliveryTime,$payTime,$carBrandName,$carSeriesName,$carModelName,$details)
+
+
+    public function tradeRefundForBaiTiao($origMerchOrdeNo,$refundAmount,$refundReason,$agentUserCode,$orderTitle,$goodsCount,$receivingAddress,$inquiryTime,$quoteTime,$orderTime,$deliveryTime,$payTime,$carBrandName,$carSeriesName,$carModelName,$details,$notifyUrl)
     {
         return $this->post([
             'service'               => 'tradeRefundForBaiTiao',
@@ -888,7 +891,8 @@ class Api extends Http
             'carBrandName'          => $carBrandName,
             'carSeriesName'         => $carSeriesName,
             'carModelName'          => $carModelName,
-            'details'               => $details
+            'details'               => $details,
+            'notifyUrl'             => $notifyUrl,
         ]);
     }
 
