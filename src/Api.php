@@ -797,7 +797,7 @@ class Api extends Http
             'service'           => 'baiTiaoPay',
             'agentUserCode'     => $agentUserCode,
             'payerUserId'       => $payerUserId,
-            'merchOrderNo'       => $merchOrderNo,
+            'merchOrderNo'      => $merchOrderNo,
             'payerAccountNo'    => $payerAccountNo,
             'amount'            => $amount,
             'userIp'            => get_client_ip(),
