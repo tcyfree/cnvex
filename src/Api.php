@@ -965,24 +965,30 @@ class Api extends Http
 
 
     /**
-     * 金融 白条支付
+     * 白条支付
      * @param $agentUserCode
      * @param $payerUserId
+     * @param $merchOrderNo
      * @param $payerAccountNo
      * @param $amount
      * @param $macAddress
+     * @param $returnUrl
+     * @param $notifyUrl
      * @return string
      */
-    public function baiTiaoPay($agentUserCode,$payerUserId,$payerAccountNo,$amount,$macAddress)
+    public function baiTiaoPay($agentUserCode,$payerUserId,$merchOrderNo,$payerAccountNo,$amount,$macAddress,$returnUrl,$notifyUrl)
     {
         return $this->post([
             'service'           => 'baiTiaoPay',
             'agentUserCode'     => $agentUserCode,
             'payerUserId'       => $payerUserId,
+            'merchOrderNo'      => $merchOrderNo,
             'payerAccountNo'    => $payerAccountNo,
             'amount'            => $amount,
             'userIp'            => get_client_ip(),
-            'macAddress'        => $macAddress
+            'macAddress'        => $macAddress,
+            'returnUrl'         => $returnUrl,
+            'notifyUrl'         => $notifyUrl,
         ]);
     }
 
@@ -1014,8 +1020,8 @@ class Api extends Http
             'tradeProfitInfoList'   => $tradeProfitInfoList,
             'agentUserCode'         => $agentUserCode,
             'orderTitle'            => $orderTitle,
-            'goodsCount'            => $goodsCount(),
-            'receivingAddress'      => $receivingAddress(),
+            'goodsCount'            => $goodsCount,
+            'receivingAddress'      => $receivingAddress,
             'inquiryTime'           => $inquiryTime,
             'quoteTime'             => $quoteTime,
             'orderTime'             => $orderTime,
@@ -1046,9 +1052,12 @@ class Api extends Http
      * @param $carSeriesName
      * @param $carModelName
      * @param $details
+     * @param $notifyUrl
      * @return string
      */
-    public function tradeRefundForBaiTiao($origMerchOrdeNo,$refundAmount,$refundReason,$agentUserCode,$orderTitle,$goodsCount,$receivingAddress,$inquiryTime,$quoteTime,$orderTime,$deliveryTime,$payTime,$carBrandName,$carSeriesName,$carModelName,$details)
+
+
+    public function tradeRefundForBaiTiao($origMerchOrdeNo,$refundAmount,$refundReason,$agentUserCode,$orderTitle,$goodsCount,$receivingAddress,$inquiryTime,$quoteTime,$orderTime,$deliveryTime,$payTime,$carBrandName,$carSeriesName,$carModelName,$details,$notifyUrl)
     {
         return $this->post([
             'service'               => 'tradeRefundForBaiTiao',
@@ -1057,8 +1066,8 @@ class Api extends Http
             'refundReason'          => $refundReason,
             'agentUserCode'         => $agentUserCode,
             'orderTitle'            => $orderTitle,
-            'goodsCount'            => $goodsCount(),
-            'receivingAddress'      => $receivingAddress(),
+            'goodsCount'            => $goodsCount,
+            'receivingAddress'      => $receivingAddress,
             'inquiryTime'           => $inquiryTime,
             'quoteTime'             => $quoteTime,
             'orderTime'             => $orderTime,
@@ -1067,7 +1076,8 @@ class Api extends Http
             'carBrandName'          => $carBrandName,
             'carSeriesName'         => $carSeriesName,
             'carModelName'          => $carModelName,
-            'details'               => $details
+            'details'               => $details,
+            'notifyUrl'             => $notifyUrl,
         ]);
     }
 
