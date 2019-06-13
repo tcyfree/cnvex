@@ -1096,9 +1096,6 @@ class Api extends Http
             'service'                   => 'queryCustomerWhiteBarApiService',
             'userId'                    => $userId,
             'whiteBarAccountTypeEnum'   => $whiteBarAccountTypeEnum,
-            'start'                     => $start,
-            'limit'                     => $limit
-
         ]);
     }
 
